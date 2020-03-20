@@ -29,9 +29,62 @@
     <!-- 구글폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Gaegu|Jua&display=swap" rel="stylesheet">
 
-    <link rel = "stylesheet" type = "text/css" href = "3.11 homework.css">
+    <link rel="stylesheet" type="text/css" href="3.11 homework.css">
+
+
+    <script>
+        function isCellPhone(p) {
+
+            p = p.split('-').join('');
+
+            var regPhone = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
+
+            return regPhone.test(p);
+
+        }
+
+
+        function each_alert(id) {
+            let name = $('.name').val();
+            let sulyang = $('.sulyang').val();
+            let acount = $('.acount').val();
+            let phonenumber = $('.phonenumber').val();
+            if (name == '') {
+                alert('이름을 입력해주세요!!');
+                $('.name').focus();
+                return;
+            } else if (sulyang == '') {
+                alert('수량을 입력해주세요');
+                $('.name').focus();
+                return;
+            } else if (!isNaN(sulyang) == false) {
+                alert('알맞는 수량을 입력해주세요');
+                $('.name').focus();
+                return;
+            } else if (acount == '') {
+                alert('주소를 입력해주세요');
+                $('.name').focus();
+                return;
+            } else if (phonenumber == '') {
+                alert('전화번호를 입력해주세요');
+                $('.name').focus();
+                return;
+            } else if (isCellPhone(phonenumber) == false) {
+                alert('알맞는 전화번호를 입력해주세요');
+                $('.name').focus();
+                return;
+            } else {
+                alert($('#'+id).text() + '완료!!') 
+                $('.name').focus();
+                return;
+            }
+        }
+
+
+    </script>
 
 </head>
+
 <body>
     <div class="wrap">
         <div class="mytitle"></div>
@@ -53,7 +106,7 @@
             <p>
                 싸고좋은 공룡팔아요~~~~~~~~~~~~~~
                 <br>공룡팔아요공룡팔아요~~공룡공룡공룡팔아요~~~~~~~
-            <p>
+                <p>
         </div>
         <div class="mymy">
             <div class="mymy3">
@@ -65,7 +118,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">성함</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="이름"
+                        <input type="text" class="form-control name" id="validationDefaultUsername" placeholder="이름"
                             aria-describedby="inputGroupPrepend2" required>
                     </div>
                 </div>
@@ -74,7 +127,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">수량</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername"
+                        <input type="text" class="form-control sulyang" id="validationDefaultUsername"
                             placeholder="2마리 이상 선택 가능합니다." aria-describedby="inputGroupPrepend2" required>
                     </div>
                 </div>
@@ -83,7 +136,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">주소</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="주소"
+                        <input type="text" class="form-control acount" id="validationDefaultUsername" placeholder="주소"
                             aria-describedby="inputGroupPrepend2" required>
                     </div>
                 </div>
@@ -92,17 +145,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">전화번호</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="전화번호"
-                            aria-describedby="inputGroupPrepend2" required>
+                        <input type="text" class="form-control phonenumber" id="validationDefaultUsername"
+                            placeholder="전화번호" aria-describedby="inputGroupPrepend2" required>
                     </div>
                 </div>
             </div>
             <div class="mymy4">
-                <button type="button" class="btn btn-primary">찜<span style="color: red;">@</span></button>
-                <button type="button" class="btn btn-primary">구입하기</button>
-                <button type="button" class="btn btn-primary">장바구니</button>
+                <button type="button" onclick="each_alert('jjim')" class="btn btn-primary" id="jjim">찜<span
+                        style="color: red;">@</span></button>
+                <button type="button" onclick="each_alert('buy')" class="btn btn-primary" id="buy">구입하기</button>
+                <button type="button" onclick="each_alert('jangbagu')" class="btn btn-primary" id="jangbagu">장바구니</button>
             </div>
         </div>
     </div>
 </body>
+
 </html>
